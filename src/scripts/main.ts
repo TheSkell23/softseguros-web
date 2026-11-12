@@ -29,6 +29,17 @@ document.addEventListener('click', (e) => {
   if (href) window.open(href, '_blank', 'noopener');
 });
 
+// Service worker (dist/sw.js, generado por scripts-migracion/gen-sw.mjs): guarda la página «Sin conexión» en el
+// dispositivo para mostrarla sin internet en lugar de la pantalla del navegador. Se registra tras la carga para
+// no competir con la página; solo en el build (en desarrollo no existe sw.js).
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      /* sin service worker el sitio funciona igual */
+    });
+  });
+}
+
 // Islas: se cargan solo si la página las usa. No se declaran como <script> dentro de los componentes porque Astro
 // los inserta en el DOM junto al componente y rompería selectores como `section:has(+footer.ft)` del CSS original.
 if (document.querySelector('[data-tabs]')) void import('./tabs.ts').then((m) => m.initTabs());

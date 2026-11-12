@@ -2,14 +2,25 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "astro",
   "installCommand": "npm ci",
-  "buildCommand": "astro build",
+  "buildCommand": "astro build && node scripts-migracion/gen-sw.mjs",
   "outputDirectory": "dist",
   "trailingSlash": true,
-  "redirects": [{ "source": "/", "destination": "/es/", "statusCode": 301 }],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/es/",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/_astro/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/uploads/(.*)",
@@ -17,6 +28,19 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
         }
       ]
     }
