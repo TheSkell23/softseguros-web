@@ -1,0 +1,105 @@
+/* Tailwind v4 SIN Preflight: solo tema y utilidades (tailwindcss.com/docs/preflight).
+   El CSS actual solo define unas pocas reglas base; se trasladan a @layer base abajo. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import './fonts.css';
+@import './keyframes.css';
+
+/* Tokens extraídos de site/*.dc.html (script de medición; usos entre paréntesis). */
+@theme {
+  /* Se descartan los colores por defecto de Tailwind: solo existen los de la marca. */
+  --color-*: initial;
+  --color-white: #fff; /* 2157 */
+  --color-black: #000; /* 54 */
+  --color-navy: #0b1b3f; /* títulos, 262 */
+  --color-ink: #14233f; /* texto del cuerpo, 157 */
+  --color-slate-1: #4a678f; /* 123 */
+  --color-slate-2: #3d5a85; /* texto secundario, 69 */
+  --color-slate-3: #27456f; /* 91 */
+  --color-deep: #0f2f63; /* 88 */
+  --color-deeper: #0d2a5c; /* 27 */
+  --color-muted: #6f82a3; /* 27 */
+  --color-brand: #1a73e8; /* azul de marca, 258 */
+  --color-brand-hover: #1e5fd9; /* 70 */
+  --color-link: #2a6ae6; /* 51 */
+  --color-link-deep: #1a3fd1;
+  --color-blue-strong: #0b3fd0; /* 85 */
+  --color-blue-1: #1779e6; /* 55 */
+  --color-blue-2: #3b8cf5; /* 34 */
+  --color-blue-3: #1457c4; /* 33 */
+  --color-blue-4: #1260c8; /* 27 */
+  --color-sky: #5aa8ff; /* 107 */
+  --color-sky-2: #7fdcff; /* 56 */
+  --color-green: #16a85c; /* 97 */
+  --color-green-dark: #0f7a3d; /* 41 */
+  --color-green-bg: #dff7e8; /* 39 */
+  --color-red: #b42323; /* 32 */
+  --color-red-bg: #ffe0e0; /* 32 */
+  --color-surface: #f1f6ff; /* 76 */
+  --color-surface-2: #e8f0fc; /* 63 */
+  --color-surface-3: #e4f0ff; /* 78 */
+  --color-surface-4: #f4f9ff; /* 55 */
+  --color-surface-5: #e3edfb; /* 57 */
+  --color-surface-6: #dcebff; /* 30 */
+  --color-surface-7: #dcecff; /* 28 */
+  --color-page: #dfeaf8; /* fondo del body */
+  --color-footer-end: #e6effb; /* final del degradado del footer */
+  /* Semitransparentes recurrentes: se usan como valores exactos, no como utilidades de opacidad. */
+  --color-glass-edge: rgba(190, 225, 255, 0.9); /* 486 */
+  --color-white-95: rgba(255, 255, 255, 0.95);
+  --color-white-92: rgba(255, 255, 255, 0.92);
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-70: rgba(255, 255, 255, 0.7);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-16: rgba(255, 255, 255, 0.16);
+  --color-white-14: rgba(255, 255, 255, 0.14);
+
+  --font-sans: 'Inter Tight', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif; /* cursiva, solo acentos */
+
+  /* Tamaños enteros recurrentes (los fraccionarios, como 14.5px, van como valores arbitrarios). */
+  --text-11: 11px;
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-19: 19px;
+  --text-20: 20px;
+  --text-22: 22px;
+  --text-26: 26px;
+  --text-30: 30px;
+  --text-36: 36px;
+
+  --radius-pill: 999px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-15: 15px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+  --radius-22: 22px;
+  --radius-24: 24px;
+  --radius-26: 26px;
+  --radius-30: 30px;
+
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1); /* 121 usos */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-pop: cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  --ease-pop-2: cubic-bezier(0.2, 0.9, 0.25, 1);
+
+  /* Puntos de corte principales: teléfono <=640, tablet 641-1000, escritorio >=1001.
+     Los demás (980, 860, 820, 420, ...) se conservan en el CSS de cada componente. */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 641px;
+  --breakpoint-desktop: 1001px;
+
+  /* Hero: zoom lento de fondo (los @keyframes están en keyframes.css). */
+  --animate-kb: kb 24s ease-in-out infinite alternate;
+  --animate-kbh: kbh 26s ease-in-out infinite alternate;
+}
+
+/* Las reglas base (box-sizing, body, enlaces) viven en shared.css, idénticas a las de site/. */

@@ -1,0 +1,12 @@
+dist
+.astro
+node_modules
+package-lock.json
+src/styles/keyframes.css
+src/content/legal
+tests/visual/out
+tests/visual/baseline
+src/content/hero-fragments
+src/components/pages/**/*.astro
+src/components/pages/**/*.json
+src/styles/hover.css

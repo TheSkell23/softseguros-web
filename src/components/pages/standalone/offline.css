@@ -1,0 +1,174 @@
+/* GENERADO: <style> de site/Offline.dc.html. */
+body {
+  margin: 0;
+}
+a {
+  color: #c3e4fd;
+}
+a:hover {
+  color: #fff;
+}
+@keyframes fl {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pl {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes sp {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes txs {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+@keyframes twk {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+@keyframes kb {
+  0% {
+    transform: scale(1.06) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.16) translate(-1.2%, -1.6%);
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 12px 24px rgba(5, 35, 120, 0.5))
+      drop-shadow(0 0 10px rgba(80, 170, 255, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 12px 24px rgba(5, 35, 120, 0.5))
+      drop-shadow(0 0 30px rgba(120, 200, 255, 0.95));
+  }
+}
+@keyframes mote {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-70vh) translateX(var(--dx)) scale(1.2);
+  }
+}
+@keyframes ring {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-14deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sig {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+@keyframes flick {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  46% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+  54% {
+    opacity: 0.5;
+  }
+  56% {
+    opacity: 1;
+  }
+}
+@keyframes stp {
+  0%,
+  24% {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    transform: none;
+  }
+  6%,
+  18% {
+    background: #3b8cff;
+    box-shadow: 0 0 12px rgba(80, 170, 255, 0.9);
+    transform: scale(1.18);
+  }
+}
+@keyframes stt {
+  0%,
+  24%,
+  100% {
+    color: #fff;
+  }
+  6%,
+  18% {
+    color: #cfe8ff;
+  }
+}

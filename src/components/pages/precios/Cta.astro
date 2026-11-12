@@ -1,0 +1,16 @@
+---
+// GENERADO por scripts-migracion/gen-page.mjs desde site/Precios.dc.html. Los textos pasan por t() (catálogo: Fase 4).
+import { pathFor } from '../../../i18n/routes.ts';
+import { getT } from '../../../i18n/index.ts';
+import type { Lang, PageKey } from '../../../i18n/routes.ts';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = getT(lang);
+
+const link = (key: PageKey, hash = ''): string => pathFor(key, lang) + hash;
+---
+
+<section id="cta" aria-labelledby="t-cta" style="position:relative;padding:48px 5% clamp(36px,4vw,64px)"> <div class="ss-reveal" style="position:relative;overflow:hidden;max-width:1120px;margin:0 auto;border-radius:36px;padding:clamp(48px,8vw,96px) clamp(24px,5vw,64px);text-align:center;background:radial-gradient(70% 90% at 50% 0%,#5aa6ff,transparent 70%),linear-gradient(160deg,#3b8cf5,#1A73E8 55%,#1157c4);box-shadow:inset 0 2px 3px rgba(255,255,255,.6),0 30px 60px rgba(26,115,232,.35)"> <span aria-hidden="true" style="position:absolute;left:-60px;bottom:-50px;width:340px;height:170px;border-radius:999px;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 60%,rgba(255,255,255,0));filter:blur(6px);pointer-events:none"></span><span aria-hidden="true" style="position:absolute;left:120px;bottom:-70px;width:300px;height:140px;border-radius:999px;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 60%,rgba(255,255,255,0));filter:blur(6px);pointer-events:none"></span><span aria-hidden="true" style="position:absolute;right:-70px;top:-50px;width:360px;height:170px;border-radius:999px;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 60%,rgba(255,255,255,0));filter:blur(6px);pointer-events:none"></span><span aria-hidden="true" style="position:absolute;right:140px;bottom:-60px;width:280px;height:130px;border-radius:999px;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 60%,rgba(255,255,255,0));filter:blur(6px);pointer-events:none"></span> <div style="position:relative"> <h2 id="t-cta" style="margin:0 auto;max-width:700px;font:600 clamp(32px,4.6vw,56px)/1.08 'Inter Tight',sans-serif;letter-spacing:-.03em;color:#fff">{t("Tu cotización ya está lista")}</h2> <p style="margin:18px auto 0;max-width:520px;font:400 17.5px/1.55 'Inter Tight',sans-serif;color:rgba(255,255,255,.95)">{t("Pide a un asesor que te la envíe por WhatsApp o agenda una demo para revisar tu caso.")}</p> <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center"> <a class="ss-btn ss-dark" href={link("prueba", "")} target="_blank" rel="noopener" aria-label={t("Prueba gratis 7 días")} style="position:relative;overflow:hidden;display:block;border-radius:999px;height:64px;background:transparent center/100% 100% no-repeat url(/uploads/cta-start.webp);width:264px;text-decoration:none"></a> <a class="ss-btn ss-light" href="https://softseguros.com/demo-softseguros-vsl/" target="_blank" rel="noopener" aria-label={t("Hablar con un asesor")} style="position:relative;overflow:hidden;display:block;border-radius:999px;height:64px;background:transparent center/100% 100% no-repeat url(/uploads/cta-demo.webp);width:264px;text-decoration:none"></a> </div> </div> </div> </section>

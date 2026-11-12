@@ -1,0 +1,16 @@
+---
+import StandaloneLayout from '../layouts/StandaloneLayout.astro';
+import Error404 from '../components/pages/standalone/Error404.astro';
+import css from '../components/pages/standalone/error404.css?raw';
+import { extraAlternates, extraPaths, extraSeo } from '../data/extra-pages.ts';
+---
+
+<StandaloneLayout
+  lang="es"
+  seo={extraSeo('error404', 'es')}
+  css={css}
+  canonicalPath={extraPaths.error404.es}
+  alternatePaths={extraAlternates('error404')}
+>
+  <Error404 lang="es" />
+</StandaloneLayout>

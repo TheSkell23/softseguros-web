@@ -1,0 +1,58 @@
+{
+  "name": "softseguros-site-astro",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "serve:dist": "node scripts-migracion/serve-dist.mjs",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify": "npm run check && npm run lint && npm run format:check && astro build",
+    "test:visual:baseline": "node tests/visual/capture.ts current tests/visual/baseline/current",
+    "test:visual:candidate": "node tests/visual/capture.ts astro tests/visual/out/candidate",
+    "test:visual:compare": "node tests/visual/compare.ts tests/visual/baseline/current tests/visual/out/candidate tests/visual/out/report",
+    "test:legal": "node tests/visual/legal.ts check ./src/content/legal tests/visual/fixtures/legal.json",
+    "check:seo": "node scripts-migracion/check-seo.mjs",
+    "check:links": "node scripts-migracion/check-links.mjs",
+    "optimize:hero": "node scripts-migracion/optimize-hero.mjs",
+    "postgen": "node scripts-migracion/scope-hero-bg.mjs && node scripts-migracion/home-mobile-hero.mjs && node scripts-migracion/home-badge.mjs && node scripts-migracion/a11y-fixes.mjs",
+    "test:visual:shared:baseline": "node tests/visual/capture.ts current tests/visual/baseline/shared --matrix=shared",
+    "test:visual:shared:candidate": "node tests/visual/capture.ts astro tests/visual/out/shared-cand --matrix=shared --align=tests/visual/baseline/shared",
+    "test:visual:shared:compare": "node tests/visual/compare.ts tests/visual/baseline/shared tests/visual/out/shared-cand tests/visual/out/shared-report --threshold=0.2",
+    "test:interact": "node tests/visual/interact.ts"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource/instrument-serif": "5.3.0",
+    "@fontsource/inter-tight": "5.3.0",
+    "@tailwindcss/vite": "4.3.4",
+    "astro": "7.4.5",
+    "tailwindcss": "4.3.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.6",
+    "@types/pngjs": "6.0.5",
+    "eslint": "10.14.0",
+    "eslint-plugin-astro": "3.2.1",
+    "globals": "17.14.0",
+    "node-html-parser": "9.0.6",
+    "pixelmatch": "8.0.0",
+    "pngjs": "7.0.0",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.2",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

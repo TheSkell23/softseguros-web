@@ -1,0 +1,63 @@
+---
+// Envoltorio de las páginas internas: reproduce la estructura de site/ (#dc-root > .sc-host > #sl-root).
+// Slot "hero": contenido propio del hero. Slot por defecto: contenido de la página (antes del footer).
+import runtimeCss from '../styles/runtime.css?raw';
+import innerCss from '../styles/inner.css?raw';
+import hoverCss from '../styles/hover.css?raw';
+import fxCss from '../styles/fx.css?raw';
+import homeCss from '../components/pages/inicio/home.css?raw';
+import BaseLayout from './BaseLayout.astro';
+import Hero from '../components/layout/Hero.astro';
+import Footer from '../components/layout/Footer.astro';
+import type { Lang, PageKey } from '../i18n/routes.ts';
+import type { PageSeo } from '../data/seo.ts';
+
+interface Props {
+  pageKey: PageKey;
+  lang: Lang;
+  seo: PageSeo;
+  outerCta?: boolean;
+}
+
+const { pageKey, lang, seo, outerCta = false } = Astro.props;
+const pageStyles = import.meta.glob<string>('../components/pages/*/page.css', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+const pageCss = pageStyles[`../components/pages/${pageKey}/page.css`] ?? '';
+const css = [
+  runtimeCss,
+  pageKey === 'inicio' ? homeCss : innerCss,
+  pageKey === 'inicio' ? '' : pageCss,
+  hoverCss,
+  fxCss,
+].join('\n');
+const wrapStyle =
+  pageKey === 'inicio'
+    ? 'position:relative;z-index:7;margin-top:-44px;border-radius:44px 44px 0 0;overflow:hidden;background:radial-gradient(40% 18% at 12% 8%,rgba(110,165,255,.5),transparent 70%),radial-gradient(34% 16% at 90% 26%,rgba(120,180,255,.4),transparent 70%),radial-gradient(40% 16% at 10% 52%,rgba(255,150,205,.4),transparent 70%),radial-gradient(36% 16% at 92% 74%,rgba(115,180,255,.5),transparent 70%),#eaf2fb'
+    : 'position:relative;z-index:7;margin-top:-44px;border-radius:44px 44px 0 0;overflow:hidden;background:#e6effb';
+---
+
+<BaseLayout pageKey={pageKey} lang={lang} seo={seo}>
+  <style slot="styles" set:html={css} />
+  <div id="dc-root">
+    <div class="sc-host">
+      <div id="sl-root" style="font-family:'Inter Tight',system-ui,sans-serif;color:#14233f">
+        <Hero lang={lang} currentKey={pageKey}>
+          <slot name="hero" />
+        </Hero>
+        <div style={wrapStyle} role="main">
+          <slot />
+          {!outerCta && <Footer lang={lang} ext={pageKey === 'inicio' ? 'png' : 'webp'} />}
+        </div>
+        {outerCta && (
+          <>
+            <slot name="cta" />
+            <Footer lang={lang} ext="webp" />
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

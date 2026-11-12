@@ -1,0 +1,33 @@
+---
+// Páginas autónomas (Error 404 y Offline): sin menú, hero ni footer. Reproduce #dc-root > .sc-host del runtime.
+import runtimeCss from '../styles/runtime.css?raw';
+import hoverCss from '../styles/hover.css?raw';
+import BaseLayout from './BaseLayout.astro';
+import type { Lang } from '../i18n/routes.ts';
+import type { PageSeo } from '../data/seo.ts';
+
+interface Props {
+  lang: Lang;
+  seo: PageSeo;
+  css: string;
+  canonicalPath: string;
+  alternatePaths: { lang: Lang; path: string }[];
+}
+const { lang, seo, css, canonicalPath, alternatePaths } = Astro.props;
+---
+
+<BaseLayout
+  pageKey="inicio"
+  lang={lang}
+  seo={seo}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+  hero={false}
+>
+  <style slot="styles" set:html={[runtimeCss, css, hoverCss].join('\n')} />
+  <div id="dc-root" data-standalone>
+    <div class="sc-host">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

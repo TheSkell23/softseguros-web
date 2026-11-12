@@ -1,0 +1,55 @@
+---
+// Elige el contenido de cada página: componentes generados (src/components/pages/<clave>/) o, mientras
+// una página no esté migrada, el andamiaje con el fragmento de hero extraído de site/.
+import PageLayout from '../layouts/PageLayout.astro';
+import { seoFor } from '../data/seo-localized.ts';
+import type { Lang, PageKey } from '../i18n/routes.ts';
+
+interface Props {
+  lang: Lang;
+  pageKey: PageKey;
+}
+type PageComponent = (props: { lang: Lang; slot?: string }) => unknown;
+const { lang, pageKey } = Astro.props;
+if (!Astro.site) throw new Error('Falta site en astro.config.mjs');
+const seo = seoFor(pageKey, lang, Astro.site);
+
+const heroes = import.meta.glob<{ default: PageComponent }>('./pages/*/Hero.astro', {
+  eager: true,
+});
+const bodies = import.meta.glob<{ default: PageComponent }>('./pages/*/Body.astro', {
+  eager: true,
+});
+const ctas = import.meta.glob<{ default: PageComponent }>('./pages/*/Cta.astro', {
+  eager: true,
+});
+const Hero = (heroes as Record<string, { default: PageComponent } | undefined>)[
+  `./pages/${pageKey}/Hero.astro`
+]?.default;
+const Body = (bodies as Record<string, { default: PageComponent } | undefined>)[
+  `./pages/${pageKey}/Body.astro`
+]?.default;
+const Cta = (ctas as Record<string, { default: PageComponent } | undefined>)[
+  `./pages/${pageKey}/Cta.astro`
+]?.default;
+// Provisional: fragmentos de hero extraídos de site/ para las páginas aún no migradas.
+const fragments = import.meta.glob<string>('../content/hero-fragments/*.html', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+const fragment = fragments[`../content/hero-fragments/${pageKey}.html`] ?? '';
+---
+
+{Hero && Body ? (
+  <PageLayout pageKey={pageKey} lang={lang} seo={seo} outerCta={Boolean(Cta)}>
+    <Hero slot="hero" lang={lang} />
+    <Body lang={lang} />
+    {Cta && <Cta slot="cta" lang={lang} />}
+  </PageLayout>
+) : (
+  <PageLayout pageKey={pageKey} lang={lang} seo={seo}>
+    <Fragment slot="hero" set:html={fragment} />
+    <div data-align-spacer style="height:240px"></div>
+  </PageLayout>
+)}

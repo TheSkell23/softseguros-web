@@ -1,0 +1,9 @@
+node_modules
+dist
+.astro
+tests/visual/out
+tests/visual/baseline
+
+.vercel
+.env
+.env.*

@@ -1,0 +1,60 @@
+---
+// Estructura compartida del hero de las páginas internas (spbar, fondo por horario, estrellas, motas, menú).
+// El contenido propio de cada página va en el slot (Fase 3: PageHero tipado).
+import {
+  heroBgLayers,
+  heroBgStyle,
+  heroStyle,
+  motes,
+  motesStyle,
+  stars,
+  starsStyle,
+} from '../../data/hero-decor.ts';
+import Header from './Header.astro';
+import HomeDecor from '../pages/inicio/Decor.astro';
+import type { Lang, PageKey } from '../../i18n/routes.ts';
+
+interface Props {
+  lang: Lang;
+  currentKey: PageKey;
+}
+const { lang, currentKey } = Astro.props;
+---
+
+<section
+  id="hero"
+  style={
+    currentKey === 'inicio'
+      ? 'position:relative;height:calc(100vh + 44px);height:calc(100svh + 44px);min-height:max(600px,calc(440px + 33vw));overflow:hidden;background:var(--skyg)'
+      : heroStyle
+  }
+>
+  {currentKey === 'inicio' ? (
+    <HomeDecor />
+  ) : (
+    <>
+      <div id="spbar" aria-hidden="true"></div>
+      <div id="hero-bg" aria-hidden="true" style={heroBgStyle}>
+        {heroBgLayers.map((l) => (
+          <i id={l.id} data-bg={l.bg} />
+        ))}
+      </div>
+      <div class="hst2" aria-hidden="true" style={starsStyle}>
+        {stars.map((s) => (
+          <i
+            style={`position:absolute;left:${s.left}%;top:${s.top}%;width:${s.size}px;height:${s.size}px;border-radius:50%;background:#fff;box-shadow:0 0 ${s.blur}px ${s.spread}px rgba(190,225,255,.9);animation:twk ${s.dur}s ease-in-out ${s.delay}s infinite`}
+          />
+        ))}
+      </div>
+      <div aria-hidden="true" style={motesStyle}>
+        {motes.map((m) => (
+          <i
+            style={`position:absolute;left:${m.left}%;bottom:-20px;width:${m.size}px;height:${m.size}px;border-radius:50%;background:radial-gradient(circle,#fff,rgba(160,215,255,.5) 55%,transparent 70%);--dx:${m.dx}px;animation:mote ${m.dur}s linear ${m.delay}s infinite`}
+          />
+        ))}
+      </div>
+    </>
+  )}
+  <Header lang={lang} currentKey={currentKey} />
+  <slot />
+</section>

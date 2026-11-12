@@ -1,0 +1,16 @@
+---
+import PageRoute from '../../components/PageRoute.astro';
+import { staticPathsFor } from '../../i18n/static-paths.ts';
+import type { PageKey } from '../../i18n/routes.ts';
+
+export function getStaticPaths() {
+  return staticPathsFor('en');
+}
+
+interface Props {
+  pageKey: PageKey;
+}
+const { pageKey } = Astro.props;
+---
+
+<PageRoute lang="en" pageKey={pageKey} />

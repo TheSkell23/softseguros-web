@@ -1,0 +1,16 @@
+---
+import StandaloneLayout from '../../layouts/StandaloneLayout.astro';
+import Offline from '../../components/pages/standalone/Offline.astro';
+import css from '../../components/pages/standalone/offline.css?raw';
+import { extraAlternates, extraPaths, extraSeo } from '../../data/extra-pages.ts';
+---
+
+<StandaloneLayout
+  lang="en"
+  seo={extraSeo('offline', 'en')}
+  css={css}
+  canonicalPath={extraPaths.offline.en}
+  alternatePaths={extraAlternates('offline')}
+>
+  <Offline lang="en" />
+</StandaloneLayout>

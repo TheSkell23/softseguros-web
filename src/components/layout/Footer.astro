@@ -1,0 +1,321 @@
+---
+// GENERADO por scripts-migracion/gen-shared.mjs (marcado idéntico al de site/). Los textos se traducen en la Fase 4.
+import { pathFor } from '../../i18n/routes.ts';
+import { getT } from '../../i18n/index.ts';
+import type { Lang, PageKey } from '../../i18n/routes.ts';
+
+interface Props {
+  lang: Lang;
+  /** Inicio usa PNG en las dos primeras capas del fondo; el resto, WebP. */
+  ext?: 'webp' | 'png';
+}
+const { lang, ext = 'webp' } = Astro.props;
+const t = getT(lang);
+const link = (key: PageKey, hash = ''): string => pathFor(key, lang) + hash;
+---
+
+<footer
+  class="ft"
+  style={`position:relative;margin-top:-60px;color:#fff;overflow:hidden;width:100%;box-sizing:border-box;min-height:calc(54vw + 116px);padding-bottom:calc(14.5vw + 72px);background:url(/uploads/footer-tf.${ext}) center top/100% auto no-repeat,url(/uploads/footer-u.${ext}) center calc(100% - 56px)/100% auto no-repeat,url(/uploads/footer-lastr.png) center bottom/100% 57px no-repeat,url(/uploads/footer-rowm.png) center 14.4vw/100% calc(100% - 14.4vw) no-repeat`}
+>
+  <div class="ft-in" style="position:relative;z-index:2;padding:calc(60px + 15vw) 5% 0">
+    <div
+      class="ft-grid"
+      style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(300px,2.3fr) repeat(3,minmax(130px,1fr));gap:36px 0;align-items:start"
+    >
+      <div
+        class="ft-brand"
+        style="display: flex; flex-direction: column; gap: 14px; padding-right: 48px; position: relative; top: -48px"
+      >
+        <div style="display: flex; align-items: center; gap: 14px; font: 600 36px 'Inter Tight',sans-serif; letter-spacing: -.02em; position: relative">
+          <img
+            src="/uploads/logo.webp"
+            alt=""
+            width="56"
+            height="56"
+            loading="lazy"
+            decoding="async"
+            style="width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(5,40,140,.4))"
+          />
+          Softseguros
+        </div>
+        <span style="font:500 26px/1.2 'Inter Tight',sans-serif;color:#fff;max-width:300px">
+          <span style="color:#c3e4fd">{t('Tu CRM de seguros,')}</span>
+          <br />
+          {t('todo en uno.')}
+        </span>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a
+            role="img"
+            aria-label="Red social"
+            style="width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));box-shadow:inset 0 1px 0 rgba(255,255,255,.3);cursor:pointer"
+            class="hv7"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="width:18px;height:18px"
+            >
+              <path d="M5 5l14 14M19 5L5 19"></path>
+            </svg>
+          </a>
+          <a
+            role="img"
+            aria-label="Red social"
+            style="width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));box-shadow:inset 0 1px 0 rgba(255,255,255,.3);cursor:pointer"
+            class="hv7"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="width:18px;height:18px"
+            >
+              <path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"></path>
+            </svg>
+          </a>
+          <a
+            role="img"
+            aria-label="Red social"
+            style="width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));box-shadow:inset 0 1px 0 rgba(255,255,255,.3);cursor:pointer"
+            class="hv7"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="width:18px;height:18px"
+            >
+              <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+              <circle cx="12" cy="12" r="3.6"></circle>
+            </svg>
+          </a>
+          <a
+            role="img"
+            aria-label="Red social"
+            style="width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));box-shadow:inset 0 1px 0 rgba(255,255,255,.3);cursor:pointer"
+            class="hv7"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="width:18px;height:18px"
+            >
+              <path d="M7 10v7M7 7v.01M11 17v-4a3 3 0 016 0v4M11 10v7"></path>
+            </svg>
+          </a>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,.2);margin:10px 0 2px"></div>
+        <span style="font:600 22px 'Inter Tight',sans-serif">{t('Recibe novedades')}</span>{' '}
+        <span style="font:400 15px 'Inter Tight',sans-serif;color:rgba(255,255,255,.75);margin-top:-8px">
+          {t('Consejos, actualizaciones y recursos para tu agencia.')}
+        </span>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 7px 7px 7px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); background: linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06)); box-shadow: inset 0 1px 0 rgba(255,255,255,.3); max-width: 540px; position: relative; top: 5px; left: 28px; width: 480px">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="width:22px;height:22px;flex:none"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+            <path d="M3.5 7l8.5 6 8.5-6"></path>
+          </svg>
+          <input
+            id="sub-email"
+            type="email"
+            aria-label="Correo electrónico"
+            placeholder={t('Correo electrónico')}
+            style="flex:1;min-width:0;height:44px;border:0;background:transparent;padding:0 6px;font:400 16px 'Inter Tight',sans-serif;color:#fff;outline:none"
+          />
+          <button style="flex:none;height:48px;padding:0 26px;border-radius:999px;border:0;background:#fff;color:#0a2f9a;font:600 16px 'Inter Tight',sans-serif;cursor:pointer;display:flex;align-items:center;gap:10px;box-shadow:0 6px 16px rgba(0,30,120,.3)">
+            {t('Suscribirme')}
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="width:18px;height:18px"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="ft-col"
+        style="display: flex; flex-direction: column; gap: 14px; padding-left: 44px; border-left: 1px solid rgba(255,255,255,.16); position: relative; top: -43px"
+      >
+        <img
+          src="/uploads/ft-ico-producto.png"
+          alt=""
+          width="56"
+          height="56"
+          loading="lazy"
+          decoding="async"
+          style="width:56px;height:56px;display:block;filter:drop-shadow(0 8px 14px rgba(0,30,120,.45))"
+        />
+        <span style="font:600 19px 'Inter Tight',sans-serif;color:#fff;margin:4px 0 4px">
+          {t('Producto')}
+        </span>
+        <a
+          href={link('soluciones', '#multicotizador')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Cotizador')}
+        </a>
+        <a
+          href={link('producto', '#crm')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Clientes')}
+        </a>
+        <a
+          href={link('producto', '#crm')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Pólizas')}
+        </a>
+        <a
+          href={link('producto', '#crm')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Renovaciones')}
+        </a>
+        <a
+          href={link('producto', '#crm')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Informes')}
+        </a>
+      </div>
+      <div
+        class="ft-col"
+        style="display: flex; flex-direction: column; gap: 14px; padding-left: 44px; border-left: 1px solid rgba(255,255,255,.16); position: relative; top: -43px"
+      >
+        <img
+          src="/uploads/ft-ico-empresa.png"
+          alt=""
+          width="56"
+          height="56"
+          loading="lazy"
+          decoding="async"
+          style="width:56px;height:56px;display:block;filter:drop-shadow(0 8px 14px rgba(0,30,120,.45))"
+        />
+        <span style="font:600 19px 'Inter Tight',sans-serif;color:#fff;margin:4px 0 4px">
+          {t('Empresa')}
+        </span>
+        <a
+          href={link('inicio', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Inicio')}
+        </a>
+        <a
+          href={link('soluciones', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Soluciones')}
+        </a>
+        <a
+          href={link('blog', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Recursos')}
+        </a>
+        <a
+          href={link('precios', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Precios')}
+        </a>
+        <a
+          href={link('faq', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('FAQ')}
+        </a>
+      </div>
+      <div
+        class="ft-col"
+        style="display: flex; flex-direction: column; gap: 14px; padding-left: 44px; border-left: 1px solid rgba(255,255,255,.16); position: relative; top: -39px"
+      >
+        <img
+          src="/uploads/ft-ico-legal.png"
+          alt=""
+          width="56"
+          height="56"
+          loading="lazy"
+          decoding="async"
+          style="width:56px;height:56px;display:block;filter:drop-shadow(0 8px 14px rgba(0,30,120,.45))"
+        />
+        <span style="font:600 19px 'Inter Tight',sans-serif;color:#fff;margin:4px 0 4px">
+          {t('Legal')}
+        </span>
+        <a
+          href={link('privacidad', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Privacidad')}
+        </a>
+        <a
+          href={link('privacidad', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Cookies')}
+        </a>
+        <a
+          href={link('terminos', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Términos')}
+        </a>
+        <a
+          href={link('terminos', '')}
+          style="color:rgba(255,255,255,.92);text-decoration:none;font:400 15px 'Inter Tight',sans-serif;cursor:pointer"
+          class="hv8"
+        >
+          {t('Aviso legal')}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ft-bot"
+    style="position:absolute;z-index:2;padding-top:18px!important;left:0;right:0;bottom:0;padding:0 4% 26px;font:400 14px 'Inter Tight',sans-serif;color:rgba(255,255,255,.88);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"
+  >
+    <span>{t('© 2026 Softseguros. Todos los derechos reservados.')}</span>
+    <span>{t('CRM para agencias de seguros.')}</span>
+  </div>
+</footer>

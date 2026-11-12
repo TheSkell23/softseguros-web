@@ -1,0 +1,45 @@
+---
+import { alternates, DEFAULT_LANG, pathFor } from '../../i18n/routes.ts';
+import type { Lang, PageKey } from '../../i18n/routes.ts';
+import type { PageSeo } from '../../data/seo.ts';
+
+interface Props {
+  pageKey: PageKey;
+  lang: Lang;
+  seo: PageSeo;
+  /** Páginas fuera del mapa de rutas (404, Offline): ruta propia y alternativas explícitas. */
+  canonicalPath?: string;
+  alternatePaths?: { lang: Lang; path: string }[];
+}
+
+const { pageKey, lang, seo, canonicalPath, alternatePaths } = Astro.props;
+const site = Astro.site;
+if (!site) throw new Error('Falta `site` en astro.config.mjs');
+
+const abs = (path: string): string => new URL(path, site).href;
+const canonical = abs(canonicalPath ?? pathFor(pageKey, lang));
+const alts = alternatePaths ?? alternates(pageKey);
+const xDefault = abs(
+  alternatePaths?.find((a) => a.lang === DEFAULT_LANG)?.path ?? pathFor(pageKey, DEFAULT_LANG),
+);
+const ogLocale: Record<Lang, string> = { es: 'es_LA', en: 'en_US' };
+// og:image: los activos pasan por astro:assets en la Fase 5; por ahora se conserva la URL actual.
+---
+
+<title>{seo.title}</title>
+<meta name="description" content={seo.description} />
+<meta name="robots" content={seo.robots} />
+<link rel="canonical" href={canonical} />
+{alts.map((a) => (
+  <link rel="alternate" hreflang={a.lang} href={abs(a.path)} />
+))}
+<link rel="alternate" hreflang="x-default" href={xDefault} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Softseguros" />
+<meta property="og:locale" content={ogLocale[lang]} />
+<meta property="og:title" content={seo.ogTitle} />
+<meta property="og:description" content={seo.ogDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={seo.ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(seo.jsonLd)} />

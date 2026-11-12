@@ -1,0 +1,167 @@
+---
+// GENERADO por scripts-migracion/gen-header.mjs a partir del menú de site/Producto.dc.html.
+// El menú móvil (#mm) lo construye src/scripts/mobile-nav.ts leyendo este DOM, igual que el sitio actual.
+import { menu, activeLabel } from '../../data/menu.ts';
+import { getT } from '../../i18n/index.ts';
+import { alternates, pathFor } from '../../i18n/routes.ts';
+import type { Lang, PageKey } from '../../i18n/routes.ts';
+
+interface Props {
+  lang: Lang;
+  currentKey: PageKey;
+}
+const { lang, currentKey } = Astro.props;
+const t = getT(lang);
+const link = (key: PageKey, hash = ''): string => pathFor(key, lang) + hash;
+const altPath = (l: Lang): string => alternates(currentKey).find((a) => a.lang === l)?.path ?? '/';
+const activeName = activeLabel[currentKey];
+const langs: { lang: Lang; label: string }[] = [
+  { lang: 'es', label: 'ES' },
+  { lang: 'en', label: 'EN' },
+];
+const otherLang: Lang = lang === 'es' ? 'en' : 'es';
+const lbLabel = lang === 'es' ? 'Switch to English' : 'Cambiar a español';
+// Fase 4: estos textos pasan por el catálogo de traducción.
+const labels = { login: t('Ingresar'), trial: t('7 días gratis') };
+---
+
+<nav
+  id="nav"
+  class="nt"
+  data-login={labels.login}
+  data-trial={labels.trial}
+  data-trial-href={link('prueba')}
+>
+  <div class="bar">
+    <div
+      class="nv-brand"
+      style="display:flex;align-items:center;color:#fff;font:600 16px 'Inter Tight',sans-serif;letter-spacing:-.01em"
+    >
+      <img
+        src="/uploads/logo.webp"
+        alt="Softseguros"
+        width="46"
+        height="46"
+        fetchpriority="high"
+        decoding="async"
+        style="flex:none;min-width:46px;width:46px;height:46px;margin:-6px 0;object-fit:contain;display:block;filter:drop-shadow(0 4px 8px rgba(10,50,160,.4))"
+      />
+      <span class="nv-name" style="margin-left:8px">
+        Softseguros
+      </span>
+    </div>
+    <div
+      class="nv-menu rf"
+      style="display:flex;align-items:center;gap:2px;padding:5px;border-radius:20px;font:500 13px 'Inter Tight',sans-serif;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.16) 55%,rgba(210,236,255,.22));border:1px solid rgba(255,255,255,.85);box-shadow:0 14px 30px rgba(15,80,190,.22),inset 0 1px 0 #fff,inset 0 -8px 14px rgba(130,205,255,.28)"
+    >
+      <a
+        class={`${currentKey === 'inicio' ? 'on ' : ''}hv1`}
+        href={link('inicio')}
+        style="display:flex;align-items:center;padding:11px 22px;border-radius:15px;color:#fff;cursor:pointer;text-decoration:none"
+      >
+        {t('Inicio')}
+      </a>{' '}
+      {menu.map((m) => (
+        <div class="dd">
+          <a
+            class={`${m.label === activeName ? 'on ' : ''}hv1`}
+            href={link(m.key, m.hash)}
+            style="display:flex;align-items:center;gap:6px;padding:11px 22px;border-radius:15px;color:#fff;cursor:pointer;text-decoration:none"
+          >
+            {t(m.label)}
+            {m.caret && (
+              <svg
+                viewBox="0 0 10 10"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="width:9px;height:9px;opacity:.85"
+              >
+                <path d="M2 3.5l3 3 3-3"></path>
+              </svg>
+            )}
+          </a>
+          <div class={m.ddc}>
+            <div>
+              {m.sub.map((x) => (
+                <a class="dd-i" href={link(x.key, x.hash)}>
+                  {t(x.label)}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="nv-r" style="display:flex;align-items:center">
+      <div
+        class="lang rf"
+        role="group"
+        aria-label="Language"
+        style="display:flex;flex:none;align-items:center;padding:4px;border-radius:30px;gap:2px;font:600 11.5px 'Inter Tight',sans-serif;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.36),rgba(255,255,255,.16));border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 8px 18px rgba(15,80,190,.15)"
+      >
+        {langs.map((l) => (
+          <a
+            href={altPath(l.lang)}
+            lang={l.lang}
+            hreflang={l.lang}
+            data-l={l.lang}
+            aria-current={l.lang === lang ? 'true' : undefined}
+            style={
+              (l.lang === lang
+                ? 'display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:30px;cursor:pointer;background:linear-gradient(180deg,#22365c,#0b1a36);box-shadow:0 5px 12px rgba(8,25,60,.45),inset 0 1px 0 rgba(255,255,255,.3)'
+                : 'padding:7px 13px;cursor:pointer') + ';text-decoration:none;color:inherit'
+            }
+          >
+            {l.lang === lang && (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="width:12px;height:12px"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"></path>
+              </svg>
+            )}
+            {l.label}
+          </a>
+        ))}
+      </div>
+      <a
+        class="login"
+        data-i="login"
+        href="https://app.softseguros.com/srv1/login/"
+        target="_blank"
+        rel="noopener"
+        style="color:#fff;font:500 13px 'Inter Tight',sans-serif;cursor:pointer"
+      >
+        {labels.login}
+      </a>{' '}
+      <a
+        class="rf hv2 ac3"
+        aria-label={labels.trial}
+        href={link('prueba', '')}
+        style="position:relative;overflow:hidden;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;flex:none;width:184px;height:42px;text-decoration:none;font:600 14px 'Inter Tight',sans-serif;letter-spacing:-.01em;color:#fff;background:linear-gradient(180deg,#5aa8ff,#1A73E8);border:1px solid rgba(255,255,255,.65);box-shadow:inset 0 1px 1px rgba(255,255,255,.75),0 8px 18px rgba(35,105,240,.4);transition:transform .25s ease,filter .25s ease"
+        data-i="trial"
+        data-cta="trial"
+      >
+        {labels.trial}
+      </a>{' '}
+      <button
+        id="lbtn"
+        type="button"
+        aria-label={`${otherLang.toUpperCase()}: ${lbLabel}`}
+        data-href={altPath(otherLang)}
+      >
+        {otherLang.toUpperCase()}
+      </button>
+      <button id="mbtn" type="button" aria-label={t('Menú')} aria-expanded="false">
+        <i></i>
+      </button>
+    </div>
+  </div>
+</nav>

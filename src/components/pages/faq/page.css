@@ -1,0 +1,13 @@
+/* GENERADO: reglas propias de FAQ.dc.html (no comunes a las 11 páginas internas), en su orden original. */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] > summary span {
+  transform: rotate(45deg);
+}
+details > summary span {
+  transition: transform 0.2s;
+}
+details:hover {
+  background: #f4f9ff;
+}

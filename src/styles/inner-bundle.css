@@ -1,0 +1,5 @@
+/* Hojas de las páginas internas, en el orden de la cascada de site/: runtime, reglas comunes, hover, movimiento. */
+@import './runtime.css';
+@import './inner.css';
+@import './hover.css';
+@import './fx.css';

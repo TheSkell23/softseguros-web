@@ -1,0 +1,10 @@
+/* Equivalente a lo que inyecta support.js en el documento. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+#dc-root,
+#dc-root > .sc-host {
+  height: 100%;
+}

@@ -1,0 +1,118 @@
+/* GENERADO: <style> de site/Error 404.dc.html. */
+body {
+  margin: 0;
+}
+a {
+  color: #c3e4fd;
+}
+a:hover {
+  color: #fff;
+}
+@keyframes fl {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes twk {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+@keyframes kb {
+  0% {
+    transform: scale(1.06) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.16) translate(-1.2%, -1.6%);
+  }
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px) rotate(-6deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(8px) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-14deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 12px 24px rgba(5, 35, 120, 0.5))
+      drop-shadow(0 0 10px rgba(80, 170, 255, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 12px 24px rgba(5, 35, 120, 0.5))
+      drop-shadow(0 0 30px rgba(120, 200, 255, 0.95));
+  }
+}
+@keyframes mote {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-70vh) translateX(var(--dx)) scale(1.2);
+  }
+}
+@keyframes sheen {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+@keyframes ring {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}

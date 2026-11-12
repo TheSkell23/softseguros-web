@@ -1,0 +1,207 @@
+<nav id="nav" class="nt">
+  <div class="bar">
+    <div
+      class="nv-brand"
+      style="
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font:
+          600 16px 'Inter Tight',
+          sans-serif;
+        letter-spacing: -0.01em;
+      "
+    >
+      <img
+        src="/uploads/logo.webp"
+        alt="Softseguros"
+        width="46"
+        height="46"
+        fetchpriority="high"
+        decoding="async"
+        style="
+          flex: none;
+          min-width: 46px;
+          width: 46px;
+          height: 46px;
+          margin: -6px 0;
+          object-fit: contain;
+          display: block;
+          filter: drop-shadow(0 4px 8px rgba(10, 50, 160, 0.4));
+        "
+      /><span class="nv-name" style="margin-left: 8px">Softseguros</span>
+    </div>
+    <div
+      class="nv-menu rf"
+      style="
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        padding: 5px;
+        border-radius: 20px;
+        font:
+          500 13px 'Inter Tight',
+          sans-serif;
+        color: #fff;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.4),
+          rgba(255, 255, 255, 0.16) 55%,
+          rgba(210, 236, 255, 0.22)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        box-shadow:
+          0 14px 30px rgba(15, 80, 190, 0.22),
+          inset 0 1px 0 #fff,
+          inset 0 -8px 14px rgba(130, 205, 255, 0.28);
+      "
+    >
+      <a
+        href="__L:inicio__"
+        style="
+          display: flex;
+          align-items: center;
+          padding: 11px 22px;
+          border-radius: 15px;
+          color: #fff;
+          cursor: pointer;
+          text-decoration: none;
+        "
+        class="hv1"
+        >Inicio</a
+      >
+      <sc-for list="{{ menu }}" as="m">
+        <div class="dd">
+          <a
+            class="{{ m.cls }} hv1"
+            href="{{ m.href }}"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              padding: 11px 22px;
+              border-radius: 15px;
+              color: #fff;
+              cursor: pointer;
+              text-decoration: none;
+            "
+            >{{ m.label }}<sc-if value="{{ m.caret }}"
+              ><svg
+                viewBox="0 0 10 10"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="width: 9px; height: 9px; opacity: 0.85"
+              >
+                <path d="M2 3.5l3 3 3-3"></path></svg></sc-if
+          ></a>
+          <div class="{{ m.ddc }}">
+            <div>
+              <sc-for list="{{ m.sub }}" as="x"
+                ><a class="dd-i" href="{{ x.href }}">{{ x.label }}</a></sc-for
+              >
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div class="nv-r" style="display: flex; align-items: center">
+      <div
+        class="lang rf"
+        style="
+          display: flex;
+          flex: none;
+          align-items: center;
+          padding: 4px;
+          border-radius: 30px;
+          gap: 2px;
+          font:
+            600 11.5px 'Inter Tight',
+            sans-serif;
+          color: #fff;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.16));
+          border: 1px solid rgba(255, 255, 255, 0.75);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.8),
+            0 8px 18px rgba(15, 80, 190, 0.15);
+        "
+      >
+        <span
+          style="
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 13px;
+            border-radius: 30px;
+            cursor: pointer;
+            background: linear-gradient(180deg, #22365c, #0b1a36);
+            box-shadow:
+              0 5px 12px rgba(8, 25, 60, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+          "
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            style="width: 12px; height: 12px"
+          >
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"></path></svg
+          >ES</span
+        >
+        <span style="padding: 7px 13px; cursor: pointer">EN</span>
+      </div>
+      <a
+        class="login"
+        href="https://app.softseguros.com/srv1/login/"
+        target="_blank"
+        rel="noopener"
+        style="
+          color: #fff;
+          font:
+            500 13px 'Inter Tight',
+            sans-serif;
+          cursor: pointer;
+        "
+        >Ingresar</a
+      >
+      <a
+        class="rf hv2 ac3"
+        aria-label="7 días gratis"
+        href="__L:prueba__"
+        style="
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 999px;
+          flex: none;
+          width: 184px;
+          height: 42px;
+          text-decoration: none;
+          font:
+            600 14px 'Inter Tight',
+            sans-serif;
+          letter-spacing: -0.01em;
+          color: #fff;
+          background: linear-gradient(180deg, #5aa8ff, #1a73e8);
+          border: 1px solid rgba(255, 255, 255, 0.65);
+          box-shadow:
+            inset 0 1px 1px rgba(255, 255, 255, 0.75),
+            0 8px 18px rgba(35, 105, 240, 0.4);
+          transition:
+            transform 0.25s ease,
+            filter 0.25s ease;
+        "
+        >7 días gratis</a
+      >
+      <button id="lbtn" type="button" aria-label="Language">EN</button
+      ><button id="mbtn" type="button" aria-label="Menú" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</nav>
