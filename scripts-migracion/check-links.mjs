@@ -1,6 +1,6 @@
 // Uso: node scripts-migracion/check-links.mjs   (después de `astro build`)
 // Revisa todos los href/src del build: internos (existe el archivo y, si hay #hash, el id en esa página) y
-// externos (solo los permitidos: demo, WhatsApp, API docs, login, YouTube y PDFs de Drive en los textos legales).
+// externos (solo los permitidos: demo, WhatsApp, API docs, login, YouTube, redes del footer y PDFs de Drive en los textos legales).
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, sep } from 'node:path';
 
@@ -12,6 +12,8 @@ const ALLOWED_EXTERNAL = [
   /^https:\/\/app\.softseguros\.com\/srv1\/login\/?/,
   /^https:\/\/www\.youtube(-nocookie)?\.com\//,
   /^https:\/\/drive\.google\.com\//,
+  /^https:\/\/www\.instagram\.com\/softseguroslatam\/?$/, // redes del footer
+  /^https:\/\/www\.linkedin\.com\/company\/softseguros\/?$/,
   /^https:\/\/app\.softseguros\.com\/docs\//, // documentación de la API
   /^https:\/\/softseguros\.com\/informacion-legal\/?/, // referencia dentro del texto legal
   /^https:\/\/aws\.amazon\.com\//, // referencia dentro del texto legal
