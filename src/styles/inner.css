@@ -1798,8 +1798,13 @@ section:has(+ footer.ft) {
   }
 }
 /* hero text adaptive */
+/* La frase destacada del título va unida cuando cabe (como antes con nowrap), pero si es más ancha que su columna
+   se parte en dos líneas equilibradas en vez de salirse y quedar debajo de las tarjetas del hero. */
 #hero h1 span {
-  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  text-wrap: balance;
 }
 #hero h1 {
   font-size: clamp(28px, calc(20px + 2.5vw), 58px) !important;
@@ -1814,5 +1819,12 @@ section:has(+ footer.ft) {
 @media (min-width: 1001px) {
   #hero h1 {
     max-width: 100%;
+  }
+  /* Hero de dos columnas (texto y tarjetas): solo la frase destacada puede ocupar parte del espacio libre de 48 px
+     entre ambas (deja 16 px). Así sigue en una línea cuando cabe y solo se parte si chocaría con las tarjetas; el
+     resto del título se reparte igual que antes. */
+  #hero .pv-hero h1 span {
+    width: max-content;
+    max-width: calc(100% + 32px);
   }
 }
