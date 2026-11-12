@@ -103,3 +103,11 @@
 }
 
 /* Las reglas base (box-sizing, body, enlaces) viven en shared.css, idénticas a las de site/. */
+
+/* Secciones fuera de pantalla (src/scripts/offscreen.ts): sus animaciones CSS se detienen hasta que vuelven. */
+.fx-off,
+.fx-off *,
+.fx-off *::before,
+.fx-off *::after {
+  animation-play-state: paused !important;
+}

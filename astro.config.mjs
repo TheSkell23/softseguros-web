@@ -19,6 +19,9 @@ export default defineConfig({
   // Astro 7 cambió el valor por defecto a 'jsx'. Se fija `true` (comportamiento anterior)
   // y se mide con las capturas; si el espaciado en línea difiere, se ajusta en la Fase 2.
   compressHTML: true,
+  // Precarga la página de destino al pasar el puntero (o tocar, en móvil) sobre un enlace interno:
+  // el cambio de página se siente inmediato. Solo afecta a enlaces del propio sitio.
+  prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],

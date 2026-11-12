@@ -4,6 +4,7 @@ import { initGlass } from './glass.ts';
 import { initHero, initProgress, initTod } from './hero.ts';
 import { initLife, initReveal } from './life.ts';
 import { initMobileNav } from './mobile-nav.ts';
+import { initOffscreenPause } from './offscreen.ts';
 
 // Las páginas autónomas (404 y Offline) no llevan menú, hero ni efectos globales: solo su propia isla.
 if (document.querySelector('[data-standalone]')) {
@@ -17,7 +18,16 @@ if (document.querySelector('[data-standalone]')) {
   initProgress();
   initReveal();
   initFx();
+  initOffscreenPause();
 }
+
+// Botones con destino (`<button data-href>`, p. ej. «Ingresa» y «Agenda una demo» del hero de Inicio): son botones
+// por su diseño, pero llevan a una página externa, que se abre en una pestaña nueva.
+document.addEventListener('click', (e) => {
+  const button = (e.target as Element | null)?.closest<HTMLElement>('button[data-href]');
+  const href = button?.dataset.href;
+  if (href) window.open(href, '_blank', 'noopener');
+});
 
 // Islas: se cargan solo si la página las usa. No se declaran como <script> dentro de los componentes porque Astro
 // los inserta en el DOM junto al componente y rompería selectores como `section:has(+footer.ft)` del CSS original.
