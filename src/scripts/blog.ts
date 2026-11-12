@@ -32,7 +32,9 @@ export async function initBlog(): Promise<void> {
       const visible = Boolean(
         article &&
         (category === 0 || article.c === category) &&
-        (!query || normalize(article.n).includes(query)),
+        (!query ||
+          normalize(article.n).includes(query) ||
+          normalize(card.textContent ?? '').includes(query)),
       );
       card.style.display = visible ? 'flex' : 'none';
       if (visible) count++;

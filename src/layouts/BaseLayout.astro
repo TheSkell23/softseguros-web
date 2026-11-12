@@ -41,6 +41,15 @@ const fonts = [inter400, inter500, inter600, serif400];
     {hero && <script is:inline set:html={heroHeadScript(pageKey)} />}
     <link rel="icon" type="image/webp" href="/uploads/logo.webp" />
     <slot name="styles" />
+    {/* Sin JavaScript nadie añade `.ss-in`: el contenido con revelado quedaría invisible. */}
+    <noscript>
+      <style is:inline>
+        .ss-reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <slot />

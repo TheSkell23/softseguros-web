@@ -1418,4 +1418,11 @@ export const en = {
   'y recordatorios de pago.': 'and payment reminders.',
   'Ya acepté las condiciones, ¿cómo empiezo?': "I've accepted the terms, how do I start?",
   'Ya estás de vuelta en línea. Recargando tu panel…': 'You are back online. Reloading your panel…',
+  Agregado: 'Added',
+  'No tengo una respuesta prediseñada para eso. Un asesor puede resolverlo contigo por WhatsApp.':
+    "I don't have a ready-made answer for that. An advisor can help you on WhatsApp.",
+  'sin conciliar a mano.': 'with no manual reconciliation.',
+  'Datos del tomador': 'Policyholder details',
+  'Sin conexión': 'No connection',
+  '3,9×': '3.9×',
 } satisfies Record<MessageKey, string>;

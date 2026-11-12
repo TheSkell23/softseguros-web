@@ -16,7 +16,7 @@
     "test:visual:baseline": "node tests/visual/capture.ts current tests/visual/baseline/current",
     "test:visual:candidate": "node tests/visual/capture.ts astro tests/visual/out/candidate",
     "test:visual:compare": "node tests/visual/compare.ts tests/visual/baseline/current tests/visual/out/candidate tests/visual/out/report",
-    "test:legal": "node tests/visual/legal.ts check ./src/content/legal tests/visual/fixtures/legal.json",
+    "test:legal": "node tests/visual/legal-dist.ts",
     "check:seo": "node scripts-migracion/check-seo.mjs",
     "check:links": "node scripts-migracion/check-links.mjs",
     "optimize:hero": "node scripts-migracion/optimize-hero.mjs",

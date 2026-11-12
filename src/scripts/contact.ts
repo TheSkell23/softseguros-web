@@ -22,7 +22,7 @@ export function initContact(): void {
     );
     const person = name?.value.trim() || 'un interesado';
     const firm = agency?.value.trim();
-    const message = `Hola, soy ${person}${firm ? ` de la agencia ${firm}` : ''}. Me interesa: ${topics[topic]?.dataset.sourceLabel}. Somos ${sizes[size]?.dataset.sourceLabel} usuarios. ¿Pueden contactarme?`;
+    const message = `Hola, soy ${person}${firm ? ` de la agencia ${firm}` : ''}. Me interesa: ${topics[topic]?.dataset.sourceLabel}. Somos ${(sizes[size]?.dataset.sourceLabel ?? '').toLowerCase()} usuarios. ¿Pueden contactarme?`;
     link.href = `https://api.whatsapp.com/send?phone=573204863161&text=${encodeURIComponent(message)}`;
   };
   topics.forEach((button, index) =>

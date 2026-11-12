@@ -24,7 +24,8 @@ export async function initTrial(): Promise<void> {
     if (!name.trim()) errors.n = 'Escribe tu nombre';
     if (!surname.trim()) errors.a = 'Escribe tu apellido';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) errors.e = 'Escribe un correo válido';
-    if (phone.replace(/\D/g, '').length < 7) errors.p = 'Escribe un teléfono válido';
+    if (!/^[\d\s()+.-]+$/.test(phone.trim()) || phone.replace(/\D/g, '').length < 7)
+      errors.p = 'Escribe un teléfono válido';
     for (const [key, errorKey] of Object.entries({ n: 'eN', a: 'eA', e: 'eE', p: 'eP' })) {
       const message = field(errorKey);
       if (message) message.textContent = t(errors[key] ?? '');
@@ -41,6 +42,15 @@ export async function initTrial(): Promise<void> {
     if (nameField) nameField.textContent = name.trim();
     if (emailField) emailField.textContent = email.trim();
   });
+  // No hay <form>: Enter en cualquier campo envía igual que el botón.
+  Object.values(inputs).forEach((input) =>
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submit?.click();
+      }
+    }),
+  );
 
   const json = document.getElementById('trial-data')?.textContent;
   if (!json) return;

@@ -74,4 +74,18 @@ export function initTabs(): void {
   };
   fromHash();
   window.addEventListener('hashchange', fromHash);
+  // Un enlace al mismo ancla que ya está en la URL no dispara `hashchange`: se atiende aquí.
+  document.addEventListener('click', (e) => {
+    const a = (e.target as Element | null)?.closest<HTMLAnchorElement>('a[href*="#"]');
+    if (!a || a.dataset.goTab !== undefined) return;
+    const url = new URL(a.href, location.href);
+    if (
+      url.pathname !== location.pathname ||
+      url.hash.toLowerCase() !== location.hash.toLowerCase()
+    )
+      return;
+    if (hashes[url.hash.toLowerCase()] === undefined) return;
+    e.preventDefault();
+    fromHash();
+  });
 }

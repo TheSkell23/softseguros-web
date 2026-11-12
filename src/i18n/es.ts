@@ -1426,5 +1426,12 @@ export const es = {
   'Ya acepté las condiciones, ¿cómo empiezo?': 'Ya acepté las condiciones, ¿cómo empiezo?',
   'Ya estás de vuelta en línea. Recargando tu panel…':
     'Ya estás de vuelta en línea. Recargando tu panel…',
+  Agregado: 'Agregado',
+  'No tengo una respuesta prediseñada para eso. Un asesor puede resolverlo contigo por WhatsApp.':
+    'No tengo una respuesta prediseñada para eso. Un asesor puede resolverlo contigo por WhatsApp.',
+  'sin conciliar a mano.': 'sin conciliar a mano.',
+  'Datos del tomador': 'Datos del tomador',
+  'Sin conexión': 'Sin conexión',
+  '3,9×': '3,9×',
 } as const;
 export type MessageKey = keyof typeof es;

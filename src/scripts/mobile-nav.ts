@@ -69,6 +69,31 @@ export function initMobileNav(): void {
     if (innerWidth > 860) close();
   });
 
+  // Pantallas táctiles con menú de escritorio (tablet): no hay :hover, así que el primer toque en un enlace con
+  // submenú lo abre (con el foco, que activa el `.dd:focus-within` existente) y el segundo navega.
+  let pointer = 'mouse';
+  let armed: Element | null = null;
+  document.addEventListener('pointerdown', (e) => (pointer = e.pointerType), { capture: true });
+  document.addEventListener(
+    'click',
+    (e) => {
+      const target = e.target as Element | null;
+      const a = target?.closest<HTMLAnchorElement>('#nav .nv-menu .dd > a');
+      const dd = a?.parentElement ?? null;
+      if (a && dd && pointer !== 'mouse' && dd.querySelector('.dd-p a') && armed !== dd) {
+        e.preventDefault();
+        armed = dd;
+        a.focus();
+        return;
+      }
+      if (armed && !(target && armed.contains(target))) {
+        armed = null;
+        (document.activeElement as HTMLElement | null)?.blur?.();
+      }
+    },
+    { capture: true },
+  );
+
   // Botón de idioma del menú móvil: navega a la misma página en el otro idioma.
   document.getElementById('lbtn')?.addEventListener('click', (e) => {
     const href = (e.currentTarget as HTMLElement).dataset.href;

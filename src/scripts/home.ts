@@ -1,9 +1,12 @@
 // Estado de las pestañas y la calculadora de Inicio, según renderVals() de Softseguros.dc.html.
 import { loadT } from '../i18n/client.ts';
-const format = (value: number): string => Math.round(value).toLocaleString('es-CO');
+const isEn = (): boolean => document.documentElement.lang === 'en';
+// Separadores según idioma: 5.000 y 3,9 en español; 5,000 y 3.9 en inglés.
+const format = (value: number): string =>
+  Math.round(value).toLocaleString(isEn() ? 'en-US' : 'es-CO');
 
 export async function initHome(): Promise<void> {
-  const t = await loadT(document.documentElement.lang === 'en' ? 'en' : 'es');
+  const t = await loadT(isEn() ? 'en' : 'es');
   const list = document.querySelector<HTMLElement>('[data-home-tabs]');
   if (list) {
     const buttons = [...list.querySelectorAll<HTMLElement>('[data-home-tab]')];
@@ -45,7 +48,7 @@ export async function initHome(): Promise<void> {
       total: `USD ${format(total)}`,
       rec: format(rec),
       hrs: `${format(520)} h`,
-      x: `${(total / 760).toFixed(1).replace('.', ',')}×`,
+      x: `${isEn() ? (total / 760).toFixed(1) : (total / 760).toFixed(1).replace('.', ',')}×`,
     };
     Object.entries(results).forEach(([key, value]) => {
       const target = field(key);
